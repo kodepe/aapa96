@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
 import { UseLangaugeContext } from "@/context/language";
@@ -11,7 +12,7 @@ const options: any = {
 };
 export const MenuOptions = () => {
   const { data } = UseLangaugeContext();
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState<any>();
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -20,7 +21,6 @@ export const MenuOptions = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log(entry.target);
             setActiveSection(entry.target.id);
           }
         });
